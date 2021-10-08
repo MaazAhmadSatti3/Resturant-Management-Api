@@ -1,0 +1,620 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"AdminLoginReq": {
+				"properties": {
+					"name": {
+						"type": "string",
+						"enum": [
+							"admin"
+						],
+						"nullable": false
+					},
+					"email": {
+						"type": "string",
+						"enum": [
+							"admin@test.com"
+						],
+						"nullable": false
+					},
+					"password": {
+						"type": "string",
+						"enum": [
+							"admin@123"
+						],
+						"nullable": false
+					}
+				},
+				"required": [
+					"name",
+					"email",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MenuSaveRes": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"itemName": {
+						"type": "string"
+					},
+					"price": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"size": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"itemName",
+					"price",
+					"type",
+					"size"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MenuSaveReq": {
+				"properties": {
+					"itemName": {
+						"type": "string"
+					},
+					"price": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"size": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"itemName",
+					"price",
+					"type",
+					"size"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ISingleMenuItem": {
+				"properties": {
+					"menuId": {
+						"type": "string"
+					},
+					"quantity": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"menuId",
+					"quantity"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ICustomer": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"address"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OrderSaveRes": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"waiterId": {
+						"type": "string"
+					},
+					"tableNo": {
+						"type": "string"
+					},
+					"menu": {
+						"items": {
+							"$ref": "#/components/schemas/ISingleMenuItem"
+						},
+						"type": "array"
+					},
+					"customer": {
+						"$ref": "#/components/schemas/ICustomer"
+					},
+					"totalBill": {
+						"type": "number",
+						"format": "double"
+					},
+					"status": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"waiterId",
+					"tableNo",
+					"menu",
+					"customer",
+					"totalBill",
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OrderSaveReq": {
+				"properties": {
+					"waiterId": {
+						"type": "string"
+					},
+					"tableNo": {
+						"type": "string"
+					},
+					"menu": {
+						"items": {
+							"$ref": "#/components/schemas/ISingleMenuItem"
+						},
+						"type": "array"
+					},
+					"customer": {
+						"$ref": "#/components/schemas/ICustomer"
+					},
+					"totalBill": {
+						"type": "number",
+						"format": "double"
+					},
+					"status": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"waiterId",
+					"tableNo",
+					"menu",
+					"customer",
+					"totalBill",
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OrderUpdateReq": {
+				"properties": {
+					"orderId": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"orderId",
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"WaiterOrderListReq": {
+				"properties": {
+					"waiterId": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"waiterId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"WaiterSaveRes": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"waiterName": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"waiterName",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"WaiterSaveReq": {
+				"properties": {
+					"waiterName": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"waiterName",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"WaiterLoginRes": {
+				"properties": {
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"WaiterLoginReq": {
+				"properties": {
+					"waiterName": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"waiterName",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"api_key": {
+				"type": "apiKey",
+				"name": "token",
+				"in": "header"
+			}
+		}
+	},
+	"info": {
+		"title": "resturantapi",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/admin/authAdmin": {
+			"post": {
+				"operationId": "AuthAdmin",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"admin"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AdminLoginReq"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/menu/saveMenu": {
+			"post": {
+				"operationId": "SaveMenu",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MenuSaveRes"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"menu"
+				],
+				"security": [
+					{
+						"api_key": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/MenuSaveReq"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/menu/getMenuList": {
+			"post": {
+				"operationId": "GetMenuList",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/MenuSaveRes"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"menu"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/order/saveOrder": {
+			"post": {
+				"operationId": "SaveOrder",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/OrderSaveRes"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"order"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/OrderSaveReq"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/order/getOrderList": {
+			"post": {
+				"operationId": "GetOrderList",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/OrderSaveRes"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"order"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/order/updateOrder": {
+			"put": {
+				"operationId": "UpdateOrder",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/OrderSaveRes"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"order"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/OrderUpdateReq"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/order/waiterOrderList": {
+			"post": {
+				"operationId": "WaiterOrderList",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/OrderSaveRes"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"order"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/WaiterOrderListReq"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/waiter/saveWaiter": {
+			"post": {
+				"operationId": "SaveWaiter",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/WaiterSaveRes"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"waiter"
+				],
+				"security": [
+					{
+						"api_key": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/WaiterSaveReq"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/waiter/loginWaiter": {
+			"post": {
+				"operationId": "LoginWaiter",
+				"responses": {
+					"200": {
+						"description": "Waiter Login Successful",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/WaiterLoginRes"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"waiter"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/WaiterLoginReq"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
